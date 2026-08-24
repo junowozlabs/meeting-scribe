@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>CFBundleExecutable</key><string>MeetingScribe</string>
+  <key>CFBundleIdentifier</key><string>com.junowoz.MeetingScribe</string>
+  <key>CFBundleName</key><string>Meeting Scribe</string>
+  <key>CFBundleDisplayName</key><string>Meeting Scribe</string>
+  <key>CFBundleIconFile</key><string>AppIcon</string>
+  <key>CFBundlePackageType</key><string>APPL</string>
+  <key>CFBundleShortVersionString</key><string>1.0</string>
+  <key>CFBundleVersion</key><string>1</string>
+  <key>LSMinimumSystemVersion</key><string>14.0</string>
+  <key>NSPrincipalClass</key><string>NSApplication</string>
+  <key>NSHighResolutionCapable</key><true/>
+  <key>NSMicrophoneUsageDescription</key><string>O Meeting Scribe usa o microfone para registrar sua voz durante reuniões.</string>
+  <key>NSScreenCaptureUsageDescription</key><string>O Meeting Scribe usa a gravação de tela para capturar o áudio interno do Mac e, quando solicitado, salvar o vídeo da tela.</string>
+  <key>NSAudioCaptureUsageDescription</key><string>O Meeting Scribe captura o áudio de reuniões reproduzido por outros aplicativos.</string>
+</dict></plist>
