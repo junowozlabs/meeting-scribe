@@ -40,7 +40,11 @@ As quatro abas de ajustes foram inspecionadas após a correção. A importação
 
 A janela também foi inspecionada com 800 pontos de largura. Os botões se reorganizam em linhas e a leitura permanece dentro do painel. A logo fornecida foi preservada, com remoção local do fundo externo e transparência conferida no PNG.
 
-Não verificado: sessão completa com VoiceOver, medições de contraste em todas as aparências, gravação real de reunião, transcrição paga real de cada codec, instalação em outro Mac e atualização entre duas versões públicas. Capturas com conteúdo pessoal não foram incluídas no repositório.
+O [CI](https://github.com/junowozlabs/meeting-scribe/actions/runs/34415912903) e a [publicação 1.2.0](https://github.com/junowozlabs/meeting-scribe/actions/runs/34415915635) passaram no commit `03a4a1d`. O workflow publicou o DMG universal, o catálogo assinado e a soma SHA256.
+
+O atualizador levou a instalação local 1.2.0 (1000) à versão pública 1.2.0 (1001), com reinício e preservação das duas transcrições. Os logs confirmaram as assinaturas Ed25519 do catálogo e do arquivo. O ícone instalado corresponde ao arquivo do repositório. O catálogo público respondeu sem autenticação.
+
+Não verificado: sessão completa com VoiceOver, medições de contraste em todas as aparências, gravação real de reunião, transcrição paga real de cada codec e instalação em outro Mac. Capturas com conteúdo pessoal não foram incluídas no repositório.
 
 A conformidade integral de acessibilidade não foi certificada. As verificações visuais se limitam aos estados percorridos no macOS local; regras de viewport de navegador não se aplicam ao app nativo.
 
