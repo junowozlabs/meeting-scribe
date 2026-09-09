@@ -25,7 +25,7 @@
 	<key>NSHighResolutionCapable</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>Criado por @junowoz. © 2026 Juno Woz.</string>
+	<string>Criado por @junowozlabs. © 2026 Juno Woz Labs.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>O Meeting Scribe usa o microfone para registrar sua voz durante reuniões.</string>
 	<key>NSPrincipalClass</key>
@@ -39,7 +39,7 @@
 	<key>SUEnableInstallerLauncherService</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>https://github.com/junowoz/meeting-scribe/releases/latest/download/appcast.xml</string>
+	<string>https://github.com/junowozlabs/meeting-scribe/releases/latest/download/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>0WbR+h8YSd7qrV/tfN2DoOtFMtYHOGR4EPWNbHatr7E=</string>
 	<key>SURequireSignedFeed</key>

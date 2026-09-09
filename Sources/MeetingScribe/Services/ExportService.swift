@@ -110,7 +110,7 @@ enum ExportService {
             CTFrameDraw(frame, context)
             let visible = CTFrameGetVisibleStringRange(frame)
             guard visible.length > 0 else { context.endPDFPage(); context.closePDF(); throw ExportError.pdfFailed }
-            let footer = NSAttributedString(string: "Meeting Scribe · @junowoz                                      \(pageNumber)", attributes: attributes)
+            let footer = NSAttributedString(string: "Meeting Scribe · @junowozlabs                                      \(pageNumber)", attributes: attributes)
             context.textPosition = CGPoint(x: 48, y: 30)
             CTLineDraw(CTLineCreateWithAttributedString(footer), context)
             context.endPDFPage()

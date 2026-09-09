@@ -62,8 +62,8 @@ struct SidebarView: View {
                 Button { openSettings() } label: { Label("Ajustes", systemImage: "gearshape") }
                     .buttonStyle(.borderless).padding(.vertical, 10)
                 Spacer()
-                Link("@junowoz", destination: URL(string: "https://github.com/junowoz")!)
-                    .font(.caption).help("Criado por @junowoz")
+                Link("@junowozlabs", destination: URL(string: "https://github.com/junowozlabs")!)
+                    .font(.caption).help("Criado por @junowozlabs")
             }.padding(.horizontal, 16)
         }
         .searchable(text: $search, prompt: "Buscar transcrições")

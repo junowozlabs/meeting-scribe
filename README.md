@@ -1,8 +1,8 @@
 # Meeting Scribe
 
-Transcreva áudios, vídeos e reuniões em um app nativo para macOS. Criado por [@junowoz](https://github.com/junowoz).
+Transcreva áudios, vídeos e reuniões em um app nativo para macOS. Criado por [@junowozlabs](https://github.com/junowozlabs).
 
-[Baixar para Mac](https://github.com/junowoz/meeting-scribe/releases/latest/download/MeetingScribe.dmg) · [Versões](https://github.com/junowoz/meeting-scribe/releases)
+[Baixar para Mac](https://github.com/junowozlabs/meeting-scribe/releases/latest/download/MeetingScribe.dmg) · [Versões](https://github.com/junowozlabs/meeting-scribe/releases)
 
 ![Ícone do Meeting Scribe](Resources/AppIcon-1024.png)
 

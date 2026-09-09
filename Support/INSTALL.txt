@@ -1,4 +1,4 @@
-Meeting Scribe — criado por @junowoz
+Meeting Scribe — criado por @junowozlabs
 
 1. Arraste MeetingScribe para Applications (Aplicativos).
 2. Abra o app na pasta Aplicativos.
@@ -7,7 +7,7 @@ Meeting Scribe — criado por @junowoz
 Este app é distribuído sem assinatura Developer ID e sem notarização da Apple.
 Se o macOS bloquear a abertura, tente abrir o app uma vez.
 Depois, abra Ajustes do Sistema > Privacidade e Segurança > Abrir Mesmo Assim.
-Confirme a abertura apenas se você baixou de github.com/junowoz/meeting-scribe.
+Confirme a abertura apenas se você baixou de github.com/junowozlabs/meeting-scribe.
 Não desative o Gatekeeper do computador.
 Computadores gerenciados podem impedir essa autorização.
 

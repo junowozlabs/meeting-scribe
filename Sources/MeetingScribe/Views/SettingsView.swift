@@ -71,8 +71,8 @@ struct SettingsView: View {
             }.tabItem { Label("Avançado", systemImage: "slider.horizontal.3") }
             Form {
                 Text("Meeting Scribe").font(.title.bold())
-                Text("Criado por @junowoz").font(.headline)
-                Link("Conhecer o projeto no GitHub", destination: URL(string: "https://github.com/junowoz/meeting-scribe")!)
+                Text("Criado por @junowozlabs").font(.headline)
+                Link("Conhecer o projeto no GitHub", destination: URL(string: "https://github.com/junowozlabs/meeting-scribe")!)
                 Text("Versão \(Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Desenvolvimento")")
                 Toggle("Buscar atualizações automaticamente", isOn: $updates.automaticallyChecksForUpdates)
                 Button("Buscar atualizações agora", action: updates.checkForUpdates)

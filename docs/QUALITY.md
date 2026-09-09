@@ -21,7 +21,7 @@ A revisão aplicou acessibilidade, organização, texto, tipografia, cores e aca
 | Histórico | Arquivo inválido podia ser sobrescrito | `AppStore.swift`: preservação e orientação para recuperação |
 | Navegação | Títulos cortados em uma linha | `SidebarView.swift`: duas linhas, título completo acessível e estado escrito |
 | Preferências | Vocabulário técnico sem explicação | `SettingsView.swift`: orientação para API key, custo, privacidade e resumo |
-| Identidade | Ícone anterior e autoria ausente | `Resources`, `SettingsView.swift`, `Info.plist`: marca minimalista e crédito @junowoz |
+| Identidade | Ícone anterior e autoria ausente | `Resources`, `SettingsView.swift`, `Info.plist`: marca minimalista e crédito @junowozlabs |
 | Movimento | Sem indicação ao arrastar | `ContentView.swift`: transição de opacidade de 150 ms, desativada com redução de movimento |
 | Gravação | Sair podia interromper sem aviso | `MeetingScribeApp.swift`: confirmação antes de sair com trabalho ativo |
 | Distribuição | Build local sem entrega automática | `UpdateService.swift`, scripts e workflows: DMG universal, Sparkle e assinatura Ed25519 |
