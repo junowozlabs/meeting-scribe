@@ -10,17 +10,7 @@ APP_CONTENTS="$APP_BUNDLE/Contents"
 APP_BINARY="$APP_CONTENTS/MacOS/$APP_NAME"
 
 pkill -x "$APP_NAME" >/dev/null 2>&1 || true
-swift build --package-path "$ROOT_DIR"
-BUILD_BINARY="$(swift build --package-path "$ROOT_DIR" --show-bin-path)/$APP_NAME"
-
-rm -rf "$APP_BUNDLE"
-mkdir -p "$APP_CONTENTS/MacOS"
-mkdir -p "$APP_CONTENTS/Resources"
-cp "$BUILD_BINARY" "$APP_BINARY"
-chmod +x "$APP_BINARY"
-cp "$ROOT_DIR/Support/Info.plist" "$APP_CONTENTS/Info.plist"
-cp "$ROOT_DIR/Resources/AppIcon.icns" "$APP_CONTENTS/Resources/AppIcon.icns"
-/usr/bin/codesign --force --sign - --entitlements "$ROOT_DIR/Support/MeetingScribe.entitlements" "$APP_BUNDLE"
+CONFIGURATION=debug "$ROOT_DIR/script/package-app.sh"
 
 open_app() { /usr/bin/open -n "$APP_BUNDLE"; }
 case "$MODE" in

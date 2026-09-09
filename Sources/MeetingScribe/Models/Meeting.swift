@@ -43,9 +43,24 @@ struct Meeting: Codable, Identifiable, Hashable {
     var progress: Double
     var text: String
     var summary: String?
+    var summaryError: String?
     var utterances: [TranscriptUtterance]
     var words: [TranscriptWord]
     var errorMessage: String?
+
+    mutating func markProcessingCancelled() {
+        if status == .summarizing, !text.isEmpty {
+            status = .completed
+            progress = 1
+            errorMessage = nil
+            summaryError = "Resumo cancelado. Sua transcrição está salva. Você pode gerar o resumo novamente."
+        } else {
+            status = .failed
+            errorMessage = transcriptID == nil
+                ? "Processamento cancelado. Tente novamente quando quiser."
+                : "Processamento pausado. O ID remoto foi preservado e pode ser retomado sem criar cobrança duplicada."
+        }
+    }
 
     init(title: String, sourceURL: URL, outputDirectory: URL, durationSeconds: Double = 0) {
         id = UUID()

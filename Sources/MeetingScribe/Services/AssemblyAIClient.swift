@@ -6,7 +6,7 @@ struct AssemblyAIClient {
     private let session: URLSession
 
     init(apiKey: String, region: AssemblyRegion, session: URLSession = .shared) {
-        self.apiKey = apiKey
+        self.apiKey = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
         self.region = region
         self.session = session
     }
@@ -150,8 +150,28 @@ struct AssemblyAIClient {
     private func validate(response: URLResponse, data: Data) throws {
         guard let http = response as? HTTPURLResponse else { throw ClientError.invalidResponse }
         guard (200..<300).contains(http.statusCode) else {
-            let body = String(decoding: data, as: UTF8.self)
-            throw ClientError.api("AssemblyAI HTTP \(http.statusCode): \(body)")
+            throw ClientError.api(Self.errorMessage(statusCode: http.statusCode, data: data))
+        }
+    }
+
+    static func errorMessage(statusCode: Int, data: Data) -> String {
+        let body = String(decoding: data, as: UTF8.self).lowercased()
+        if body.contains("does not have access to this llm") {
+            return "Sua conta AssemblyAI não tem acesso ao modelo de resumo. A transcrição continua disponível. Ative o acesso ao LLM Gateway na AssemblyAI e tente gerar o resumo novamente."
+        }
+        switch statusCode {
+        case 401, 403:
+            return "A AssemblyAI recusou o acesso. Confira a API key e a região em Ajustes e tente novamente."
+        case 402:
+            return "A AssemblyAI precisa de saldo para continuar. Confira o faturamento da sua conta e tente novamente."
+        case 429:
+            return "A AssemblyAI atingiu o limite de solicitações. Aguarde alguns minutos e tente novamente."
+        case 500...599:
+            return "A AssemblyAI está indisponível no momento. Tente novamente em alguns minutos."
+        case 404:
+            return "A transcrição não está mais disponível na AssemblyAI. Importe o arquivo novamente para criar outra transcrição."
+        default:
+            return "A AssemblyAI não aceitou a solicitação (HTTP \(statusCode)). Confira o formato do arquivo e as opções de transcrição em Ajustes."
         }
     }
 

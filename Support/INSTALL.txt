@@ -1,0 +1,20 @@
+Meeting Scribe — criado por @junowoz
+
+1. Arraste MeetingScribe para Applications (Aplicativos).
+2. Abra o app na pasta Aplicativos.
+3. Informe sua chave da AssemblyAI em Ajustes.
+
+Este app é distribuído sem assinatura Developer ID e sem notarização da Apple.
+Se o macOS bloquear a abertura, tente abrir o app uma vez.
+Depois, abra Ajustes do Sistema > Privacidade e Segurança > Abrir Mesmo Assim.
+Confirme a abertura apenas se você baixou de github.com/junowoz/meeting-scribe.
+Não desative o Gatekeeper do computador.
+Computadores gerenciados podem impedir essa autorização.
+
+A chave da API fica no Chaves do macOS. Arquivos e transcrições ficam no Mac.
+A transcrição envia o áudio para a AssemblyAI e usa os créditos da sua conta.
+
+O app busca atualizações automaticamente e avisa quando uma versão está disponível.
+Também use Meeting Scribe > Buscar atualizações.
+As atualizações têm assinatura Ed25519 própria, independente de uma conta Apple.
+Instale o app em Aplicativos antes de atualizar. Não execute direto do DMG.
