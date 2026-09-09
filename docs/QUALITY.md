@@ -20,7 +20,9 @@ A revisão aplicou acessibilidade, organização, texto, tipografia, cores e aca
 | Exclusão | Ação escondida e falha ignorada | `SidebarView.swift`, `AppStore.swift`: botão Excluir, confirmação, Lixo e preservação em caso de falha |
 | Histórico | Arquivo inválido podia ser sobrescrito | `AppStore.swift`: preservação e orientação para recuperação |
 | Navegação | Títulos cortados em uma linha | `SidebarView.swift`: duas linhas, título completo acessível e estado escrito |
-| Preferências | Vocabulário técnico sem explicação | `SettingsView.swift`: orientação para API key, custo, privacidade e resumo |
+| Preferências | Formulários cortavam textos longos | `SettingsView.swift`: rótulos acima dos campos, largura limitada e rolagem |
+| Janela | Histórico deslocava os painéis acima da barra | `ContentView.swift`: divisão nativa com área limitada ao tamanho da janela |
+| Migração | Biblioteca vinculada à identidade anterior | `LegacyMigration.swift`: cópia preservada e caminhos atualizados para a nova identidade |
 | Identidade | Ícone anterior e autoria ausente | `Resources`, `SettingsView.swift`, `Info.plist`: marca minimalista e crédito @junowozlabs |
 | Movimento | Sem indicação ao arrastar | `ContentView.swift`: transição de opacidade de 150 ms, desativada com redução de movimento |
 | Gravação | Sair podia interromper sem aviso | `MeetingScribeApp.swift`: confirmação antes de sair com trabalho ativo |
@@ -28,11 +30,15 @@ A revisão aplicou acessibilidade, organização, texto, tipografia, cores e aca
 
 ## Verificação
 
-`swift test --disable-sandbox`: 24 testes passaram localmente, incluindo mistura de áudio, PDF longo, Unicode, formatos, fila e histórico. A execução exigiu acesso aos serviços de mídia do macOS fora do sandbox de ferramentas.
+`swift test --disable-sandbox`: 27 testes passaram localmente, incluindo mistura de áudio, PDF longo, Unicode, formatos, fila, histórico e migração. A execução exigiu acesso aos serviços de mídia do macOS fora do sandbox de ferramentas.
 
 `swift build`, `git diff --check`, validação de plist e sintaxe dos scripts passaram. O projeto não configura um linter Swift separado; a compilação verifica os tipos.
 
 A interface real foi inspecionada pela árvore de acessibilidade e capturas de janela. Foram percorridos transcrição, resumo com erro antigo migrado, busca sem resultado, menu de exportação, diálogo de PDF e confirmação de exclusão. Escape fechou os diálogos sem apagar dados. Os controles novos apresentam nomes acessíveis.
+
+As quatro abas de ajustes foram inspecionadas após a correção. A importação da biblioteca anterior preservou duas transcrições e seus arquivos na instalação nova. A janela com histórico foi conferida após substituir a divisão de navegação por painéis nativos.
+
+A janela também foi inspecionada com 800 pontos de largura. Os botões se reorganizam em linhas e a leitura permanece dentro do painel. A logo fornecida foi preservada, com remoção local do fundo externo e transparência conferida no PNG.
 
 Não verificado: sessão completa com VoiceOver, medições de contraste em todas as aparências, gravação real de reunião, transcrição paga real de cada codec, instalação em outro Mac e atualização entre duas versões públicas. Capturas com conteúdo pessoal não foram incluídas no repositório.
 

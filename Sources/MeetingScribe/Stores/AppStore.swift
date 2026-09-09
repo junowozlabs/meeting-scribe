@@ -30,6 +30,12 @@ final class AppStore: ObservableObject {
         self.trashItem = trashItem
         self.storageDirectory = storageDirectory
         apiKey = apiKeyOverride ?? KeychainStore.loadAPIKey()
+        if storageDirectory == nil,
+           UserDefaults.standard.data(forKey: "transcription-settings") == nil,
+           let legacy = UserDefaults(suiteName: LegacyMigration.legacyBundleIdentifier)?.data(forKey: "transcription-settings"),
+           (try? JSONDecoder().decode(TranscriptionSettings.self, from: legacy)) != nil {
+            UserDefaults.standard.set(legacy, forKey: "transcription-settings")
+        }
         if let data = UserDefaults.standard.data(forKey: "transcription-settings"),
            let value = try? JSONDecoder().decode(TranscriptionSettings.self, from: data) { settings = value }
         else { settings = TranscriptionSettings() }
@@ -57,6 +63,37 @@ final class AppStore: ObservableObject {
         if let storageDirectory { return storageDirectory.appending(path: "Meetings", directoryHint: .isDirectory) }
         let support = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
         return support.appending(path: "MeetingScribe/Meetings", directoryHint: .isDirectory)
+    }
+
+    func importLegacyHistory() {
+        guard !isBusy, !isRecording else { return }
+        guard meetings.isEmpty else {
+            alertMessage = "Já existe um histórico neste app. A biblioteca anterior foi preservada e não será sobrescrita."
+            return
+        }
+        let panel = NSOpenPanel()
+        panel.title = "Importar histórico anterior"
+        panel.message = "Selecione a pasta MeetingScribe que contém meetings.json e a pasta Meetings."
+        panel.canChooseDirectories = true
+        panel.canChooseFiles = false
+        panel.allowsMultipleSelection = false
+        panel.prompt = "Importar histórico"
+        guard panel.runModal() == .OK, let source = panel.url else { return }
+        let accessed = source.startAccessingSecurityScopedResource()
+        defer { if accessed { source.stopAccessingSecurityScopedResource() } }
+        do {
+            let imported = try LegacyMigration.migrate(from: source, to: meetingsRoot.deletingLastPathComponent())
+            guard imported else {
+                alertMessage = "Já existe um histórico no destino. Nenhum arquivo foi alterado."
+                return
+            }
+            historyIsReadable = true
+            loadMeetings()
+            selection = meetings.first?.id
+            alertMessage = "Histórico importado. Os arquivos originais foram preservados."
+        } catch {
+            alertMessage = "Não foi possível importar o histórico: \(error.localizedDescription)"
+        }
     }
 
     func savePreferences() {

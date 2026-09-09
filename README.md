@@ -1,5 +1,7 @@
 # Meeting Scribe
 
+<img src="Resources/AppIcon-1024.png" width="96" alt="Logo do Meeting Scribe">
+
 Transcreva áudios, vídeos e reuniões em um app nativo para macOS. Criado por [@junowozlabs](https://github.com/junowozlabs).
 
 [Baixar para Mac](https://github.com/junowozlabs/meeting-scribe/releases/latest/download/MeetingScribe.dmg) · [Versões](https://github.com/junowozlabs/meeting-scribe/releases)
@@ -59,17 +61,27 @@ O workflow Test and build executa os testes e monta o app em pushes para `main`/
 
 Configure o secret `SPARKLE_PRIVATE_KEY` no repositório com a chave correspondente a `SUPublicEDKey` em `Support/Info.plist`. Mantenha essa chave privada fora do Git e preserve uma cópia segura. Não gere outra chave para cada versão.
 
-Para publicar, execute o workflow Publish DMG and updates com uma versão como `1.1.1`, ou envie uma tag:
+Para publicar, execute o workflow Publish DMG and updates com uma versão como `1.2.1`, ou envie uma tag:
 
 ```bash
-git tag v1.1.1
-git push origin v1.1.1
+git tag v1.2.1
+git push origin v1.2.1
 ```
 
 Para criar uma distribuição local assinada com a chave no Keychain:
 
 ```bash
-VERSION=1.1.1 BUILD_NUMBER=111 ./script/release.sh
+VERSION=1.2.1 BUILD_NUMBER=1101 ./script/release.sh
 ```
 
 O resultado fica em `dist/release/`: DMG, appcast assinado e SHA256SUMS. O número de build deve aumentar a cada versão. A publicação recusa uma chave ausente; não há fallback para atualizações sem assinatura.
+
+## Migração para a Juno Woz Labs
+
+A versão 1.2.0 usa `com.junowozlabs.MeetingScribe`. Se você usava a versão anterior, reinstale pelo DMG uma vez. As atualizações seguintes usam a nova identidade.
+
+A API key é migrada quando o Keychain permite o acesso. Caso contrário, cole a chave novamente em Ajustes → Conta. As permissões de gravação podem ser solicitadas novamente.
+
+Para preservar as reuniões, abra Ajustes → Sobre → Importar histórico da versão anterior. Selecione a pasta `~/Library/Containers/com.junowoz.MeetingScribe/Data/Library/Application Support/MeetingScribe`. O app copia os arquivos e ajusta os caminhos, sem substituir uma biblioteca existente. A pasta antiga permanece como cópia de segurança.
+
+Não exclua a pasta antiga até conferir as transcrições e os arquivos na nova versão. O identificador antigo permanece no código apenas para essa migração.

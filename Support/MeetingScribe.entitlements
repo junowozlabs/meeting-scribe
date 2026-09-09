@@ -12,8 +12,8 @@
 	<true/>
 	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
 	<array>
-		<string>com.junowoz.MeetingScribe-spks</string>
-		<string>com.junowoz.MeetingScribe-spki</string>
+		<string>com.junowozlabs.MeetingScribe-spks</string>
+		<string>com.junowozlabs.MeetingScribe-spki</string>
 	</array>
 </dict>
 </plist>

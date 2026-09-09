@@ -3,7 +3,7 @@ set -euo pipefail
 
 MODE="${1:-run}"
 APP_NAME="MeetingScribe"
-BUNDLE_ID="com.junowoz.MeetingScribe"
+BUNDLE_ID="com.junowozlabs.MeetingScribe"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 APP_BUNDLE="$ROOT_DIR/dist/$APP_NAME.app"
 APP_CONTENTS="$APP_BUNDLE/Contents"

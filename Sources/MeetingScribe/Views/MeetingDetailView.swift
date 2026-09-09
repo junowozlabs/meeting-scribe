@@ -33,13 +33,14 @@ struct MeetingDetailView: View {
                         Text("Transcrição").tag(0)
                         Text("Resumo").tag(1)
                         Text("Palavras").tag(2)
-                    }.pickerStyle(.segmented).frame(maxWidth: 350)
+                    }.pickerStyle(.segmented).labelsHidden().frame(maxWidth: 350)
                     Spacer()
                     Menu {
                         Button("Texto menor") { textSize = max(13, textSize - 1) }
                         Button("Texto maior") { textSize = min(24, textSize + 1) }
                         Button("Tamanho padrão") { textSize = 16 }
                     } label: { Label("Tamanho do texto", systemImage: "textformat.size") }
+                        .labelStyle(.iconOnly).accessibilityLabel("Tamanho do texto")
                         .menuStyle(.borderlessButton).fixedSize().help("Ajustar tamanho da leitura")
                 }.padding(.horizontal, 24).padding(.vertical, 16)
                 if showPlayer, let player {
@@ -95,7 +96,9 @@ struct MeetingDetailView: View {
             }
             ViewThatFits(in: .horizontal) {
                 HStack(spacing: 10) { actions }
-                VStack(alignment: .leading, spacing: 10) { actions }
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 130), alignment: .leading)], alignment: .leading, spacing: 10) {
+                    actions
+                }
             }
         }.padding(24).frame(maxWidth: .infinity, alignment: .leading).background(.bar)
     }

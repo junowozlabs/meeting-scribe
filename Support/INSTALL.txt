@@ -18,3 +18,10 @@ O app busca atualizações automaticamente e avisa quando uma versão está disp
 Também use Meeting Scribe > Buscar atualizações.
 As atualizações têm assinatura Ed25519 própria, independente de uma conta Apple.
 Instale o app em Aplicativos antes de atualizar. Não execute direto do DMG.
+
+Migração da versão 1.1.0
+
+A versão 1.2.0 usa a identidade com.junowozlabs.MeetingScribe.
+Instale esta versão manualmente pelo DMG e informe novamente sua chave da API.
+Importe o histórico antigo pelo app antes de remover a instalação anterior.
+A partir da versão 1.2.0, as próximas versões usam a atualização integrada.

@@ -10,10 +10,9 @@ struct ContentView: View {
     @State private var isDropTarget = false
 
     var body: some View {
-        NavigationSplitView {
+        HSplitView {
             SidebarView(store: store)
-                .navigationSplitViewColumnWidth(min: 230, ideal: 280, max: 360)
-        } detail: {
+                .frame(minWidth: 230, idealWidth: 280, maxWidth: 360, maxHeight: .infinity)
             VStack(spacing: 0) {
                 if store.apiKey.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                     HStack(spacing: 12) {
@@ -28,7 +27,7 @@ struct ContentView: View {
                 } else {
                     EmptyLibraryView(importAction: chooseMedia, recordAction: beginRecording)
                 }
-            }
+            }.frame(minWidth: 450, maxWidth: .infinity, maxHeight: .infinity)
         }
         .overlay {
             if isDropTarget {

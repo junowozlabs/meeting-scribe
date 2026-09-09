@@ -11,8 +11,8 @@ struct RecordingResult: Sendable {
 
 final class RecordingService: NSObject, @unchecked Sendable {
     var onCaptureError: (@Sendable (Error) -> Void)?
-    private let captureQueue = DispatchQueue(label: "com.junowoz.MeetingScribe.capture")
-    private let microphoneQueue = DispatchQueue(label: "com.junowoz.MeetingScribe.microphone")
+    private let captureQueue = DispatchQueue(label: "com.junowozlabs.MeetingScribe.capture")
+    private let microphoneQueue = DispatchQueue(label: "com.junowozlabs.MeetingScribe.microphone")
     private var stream: SCStream?
     private var microphoneSession: AVCaptureSession?
     private var systemWriter: TimedWriter?

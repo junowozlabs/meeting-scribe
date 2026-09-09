@@ -26,7 +26,10 @@ struct MeetingScribeApp: App {
 
     var body: some Scene {
         WindowGroup("Meeting Scribe", id: "main") {
-            ContentView(store: store)
+            GeometryReader { geometry in
+                ContentView(store: store)
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+            }
                 .onAppear { appDelegate.workInProgress = { store.isBusy || store.isRecording || store.queuedCount > 0 } }
                 .frame(minWidth: 780, minHeight: 560)
                 .environment(\.locale, Locale(identifier: "pt_BR"))
@@ -36,6 +39,7 @@ struct MeetingScribeApp: App {
                 )) { Button("OK") { store.alertMessage = nil } } message: { Text(store.alertMessage ?? "") }
         }
         .defaultSize(width: 1_180, height: 760)
+        .windowResizability(.contentMinSize)
         .commands {
             CommandGroup(after: .appInfo) {
                 Button("Buscar atualizações…", action: updates.checkForUpdates)
